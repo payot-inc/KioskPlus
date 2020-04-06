@@ -11,7 +11,7 @@
       <div class="pointItems fill-height">
         <v-row>
           <v-col cols="6" v-for="col in pointGoods" :key="col">
-            <v-btn outlined width="100%" height="240px" class="pa-0" @click="$refs.cardModal.open(true)">
+            <v-btn outlined width="100%" height="240px" class="pa-0" @click="$refs.confirmModal.open(true)">
               <div class="pointItem">
                 <div class="priceInfo">
                   <strong>{{col.name}}</strong>
@@ -29,6 +29,14 @@
     </div>
 
     <CardModal ref="cardModal" />
+    <ConfirmModal 
+      text1="2,000포인트를 선택하셨습니다"
+      text2="결제를 진행할까요?"
+      ok="네, 결제를 진행합니다"
+      cancle="취소"
+      ref="confirmModal"
+      @done="$refs.cardModal.open(true)"
+    />
   </div>
 </template>
 
@@ -36,10 +44,11 @@
 import SubTitleBar from '@/components/subTitleBar.vue';
 import UserInfo from '@/components/userInfo.vue';
 import CardModal from '@/components/modal/cardModal.vue';
+import ConfirmModal from '@/components/modal/confirm.vue';
 
 export default {
   components:{
-    SubTitleBar, UserInfo, CardModal
+    SubTitleBar, UserInfo, CardModal, ConfirmModal
   },
 
   data(){
@@ -85,10 +94,16 @@ export default {
           price:10000,
           bonus:500,
         },
-     
       ]
     }
+  },
+
+  methods:{
+    cardModalOpen(value){
+      console.log(value)
+    }
   }
+  
 }
 </script>
 

@@ -31,7 +31,7 @@
               비밀번호를 틀리셨습니다 <br />다시 입력해주세요
             </dd>
           </dl>
-          <v-btn outlined @click="$refs.massage.open(true)">
+          <v-btn outlined @click="$refs.confirm.open(true)">
             <span>비밀번호가 생각나지 않습니다</span>
             <v-icon>fa-angle-right</v-icon>
           </v-btn>
@@ -104,12 +104,21 @@
       ref="massage"
       type="pass"
       description="휴대폰의 문자메세지를 확인해주세요"
-      link="$refs.passFind.open(true)"
-      @ok:click="parents($event)"
+      @done="$refs.passFind.open(true)"
     >
       <span style="color:#0085DE">{{ phone }}</span> 님의 번호로 임시비밀번호를
       발송하였습니다
     </MassageModal>
+
+    <ConfirmModal
+      text1="010-8525-4651 으로 "
+      text2="임시비밀번호를 발송할까요?"
+      ok="네 발송합니다"
+      cancle="아니오"
+      @done="$refs.massage.open(true)"
+      ref="confirm"
+    />
+
 
     <PassFind ref="passFind" />
   </div>
@@ -119,6 +128,7 @@
 import Progress from '@/components/modal/progress.vue';
 import MassageModal from '@/components/modal/massage.vue';
 import PassFind from '@/components/modal/passFind.vue';
+import ConfirmModal from '@/components/modal/confirm.vue';
 
 export default {
   props: ['phone', 'title', 'messasge'],
@@ -127,6 +137,7 @@ export default {
     Progress,
     MassageModal,
     PassFind,
+    ConfirmModal
   },
 
   data() {
@@ -193,8 +204,6 @@ export default {
     parents(value) {
       console.log(value);
     },
-
-    
   },
 };
 </script>

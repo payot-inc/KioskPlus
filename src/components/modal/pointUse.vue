@@ -14,10 +14,12 @@
         </v-btn>
       </div>
       <div class="dialogBody">
-        <dl class="myPoint">
-          <dt>나의 포인트</dt>
-          <dd>{{ myPointAmount | numeral('0,0')}} 포인트</dd>
-        </dl>
+        <div class="myPoint">
+          <div class="myPointCircle">
+            <label>나의 포인트</label>
+            <span>{{ myPointAmount | numeral('0,0')}}P</span>
+          </div>
+        </div>
         <dl class="usePoint">
           <dt>사용할 포인트</dt>
           <dd>{{ pointValue }} <span>포인트</span></dd>
@@ -39,7 +41,7 @@
         <div class="divider"></div>
 
         <v-btn class="completeBtn" outlined @click="done">
-          입력완료
+          포인트 사용하기
         </v-btn>
       </div>
     </div>
@@ -97,13 +99,13 @@ export default {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background: #0085de;
+  background: #fff;
   height: 100px;
   overflow: hidden;
 
   span {
     font-size: 36px;
-    color: #fff;
+    color: #494949;
     padding-left: 40px;
   }
   .v-btn {
@@ -120,28 +122,45 @@ export default {
   background: #fff;
   min-height: 200px;
 
-  dl.myPoint {
+  .myPoint {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:40px 0;
 
-    dt {
-      font-size: 32px;
+    .myPointCircle{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      width:320px;
+      height:320px;
+      background:#f2f2f2;
+      border-radius:50%;
+    }
+
+    label {
+      font-size: 28px;
       color: #888;
     }
-    dd {
-      font-size: 32px;
+    
+    span{
+      font-size: 44px;
       font-weight: 600;
+      color:#0085de
     }
   }
 
   dl.usePoint {
     display: flex;
     align-items: center;
-    border-bottom: 6px solid #0085de;
-    flex-direction: column;
-    padding-bottom: 10px;
+    border-bottom: 6px solid #EE2073;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 0;
+
 
     dt {
       text-align: left;
@@ -149,12 +168,13 @@ export default {
       font-size: 32px;
       color: #888;
     }
+
     dd {
       width: 100%;
       text-align: right;
       font-size: 54px;
       font-weight: 600;
-      color: #0085de;
+      color: #EE2073;
 
       span {
         font-size: 32px;
@@ -177,8 +197,8 @@ export default {
         height: 80px;
         font-size: 32px;
         border-radius: 10px;
-        border: 2px solid #0085de;
-        color: #0085de;
+        border: 2px solid #EE2073;
+        color: #EE2073;
       }
     }
     .pointBtn:last-child {

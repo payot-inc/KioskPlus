@@ -11,7 +11,7 @@ export default new Vuex.Store({
     },
     user: {
       phone: '010-0000-0000',
-      point: 1000,
+      point: 1959000,
       machine: {},
       product: {},
       payAmount: 0,

@@ -52,7 +52,7 @@ export default {
       }
     },
     done() {
-      this.$emit('ok:click', { status: true, message: 'success' });
+      this.$emit('done');
       this.visible = false;
     },
   },

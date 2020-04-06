@@ -1,13 +1,5 @@
 <template>
   <div class="userLogin" id="container">
-    <JoinModal
-      :phone="[phone.first, phone.middle, phone.last].join('-')"
-      ref="joinModal"
-    />
-    <loginModal
-      :phone="[phone.first, phone.middle, phone.last].join('-')"
-      ref="loginModal"
-    />
 
     <SubTitleBar title="전화번호 입력" />
 
@@ -69,10 +61,62 @@
               >다시입력</v-btn
             >
           </div>
-        </div>
+        </div> <!-- keypad -->
+      </div> <!-- loginBox -->
+
+      <div class="guide">
+        <h4>장비 사용방법</h4>
+        <v-row>
+          <v-col cols="3">
+            <dl>
+              <dt>이미지</dt>
+              <dd>
+                <strong>장비 확인 및 준비</strong>
+                <span>사용하고자 하는 장비에서 코스를 선택 후 세탁물을 넣고 문을 닫아주세요</span>
+              </dd>
+            </dl>
+          </v-col>
+          <v-col cols="3">
+            <dl>
+              <dt>이미지</dt>
+              <dd>
+                <strong>키오스크 사용</strong>
+                <span>키오스크에서 사용하고자 하는 장비선택 후 투입금액을 설정합니다</span>
+              </dd>
+            </dl>
+          </v-col>
+          <v-col cols="3">
+            <dl>
+              <dt>이미지</dt>
+              <dd>
+                <strong>포인트 사용 및 결제</strong>
+                <span>사용할 포인트를 설정 후 신용카드 및 현금 중 결제방법을 선택하고 결제합니다</span>
+              </dd>
+            </dl>
+          </v-col>
+          <v-col cols="3">
+            <dl>
+              <dt>이미지</dt>
+              <dd>
+                <strong>장비 사용</strong>
+                <span>모든 과정이 완료되면 해당 장비로 돌아가 시작하기 버튼을 눌러줍니다</span>
+              </dd>
+            </dl>
+          </v-col>
+        </v-row>
       </div>
-    </div>
-  </div>
+
+    </div> <!-- inner -->
+
+    <JoinModal
+      :phone="[phone.first, phone.middle, phone.last].join('-')"
+      ref="joinModal"
+    />
+    <loginModal
+      :phone="[phone.first, phone.middle, phone.last].join('-')"
+      ref="loginModal"
+    />
+  </div> <!-- container -->
 </template>
 
 <script>
@@ -251,6 +295,47 @@ export default {
         }
       }
     }
+  }
+
+  .guide{
+
+    margin-top:50px;
+
+    h4{
+      font-size:36px;
+      color:#fff;
+      font-weight:500;
+    }
+
+
+    dl{
+      flex:1;margin-top:20px;
+
+      dt{
+        width:100%;
+        height:240px;
+        background:#fff;
+        border-radius:10px;
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+        overflow:hidden;
+      }
+      dd{
+        margin-top:30px;
+        strong{display:block;color:#fff;font-weight:500;font-size:24px;text-align:center;}
+        span{
+          display:block;
+          color:rgba(255,255,255,0.7);
+          font-size:22px;
+          font-weight:400;
+          margin-top:10px;
+          text-align:left;
+        }
+      }
+    }
+
   }
 }
 </style>
