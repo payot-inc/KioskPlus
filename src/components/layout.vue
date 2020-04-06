@@ -1,8 +1,8 @@
 <template>
   <div id="wrap">
-    <Header />
+    <Header v-if="!['Login','Examine'].includes($route.name)" />
     <slot />
-    <Footer />
+    <Footer v-if="!['Login','Examine'].includes($route.name)" />
   </div>
 </template>
 

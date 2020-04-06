@@ -1,23 +1,19 @@
 <template>
-  <div class="login" id="wrap">
+  <div class="login">
     <div class="contents">
-      <div class="logo">
-        <img src="@/assets/img/logo_w.png" />
+      <div class="loginTitle">
+        KIOSK <span>PRO</span>
       </div>
 
       <div class="loginBox">
-        <label>페이오티 키오스크 로그인</label>
+        <label>키오스크 로그인</label>
         <input type="text" class="textInput" placeholder="아이디" />
         <input type="password" class="textInput" placeholder="비밀번호" />
-        <div class="checkLine">
-          <input type="checkbox" class="check" />
-          <p>자동로그인<span>(체크하시면 자동로그인 됩니다)</span></p>
-        </div>
         <v-btn
           block
+          outlined
           height="90px"
           class="loginBtn"
-          color="#2816A7"
           dark
           @click="loging"
           >로그인</v-btn
@@ -39,24 +35,54 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#wrap.login {
+.login {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 120px;
+  height:100%;
 }
-.logo {
-  margin-bottom: 60px;
+.loginTitle {
+  font-size:130px;
+  line-height:110px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:60px;
+  text-align:center;
+  text-shadow: 0 5px 30px rgba(0,0,0,0.3);
+  vertical-align: middle;
+  letter-spacing: 5px;
 
-  img {
-    height: 210px;
+  display:flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  span{
+    display:inline-block;
+    height:78px;
+    line-height:78px;
+    font-size:54px;
+    border-radius:10px;
+    background:#fff;
+    padding:0 20px;
+    margin-left:20px;
+    color:#393939;
+    letter-spacing:0px;
+    text-shadow: none;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
   }
 }
 
 .loginBox {
   width: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-  padding: 50px;
-  border: 2px solid rgba(255, 255, 255, 0.15);
+  padding: 60px;
   color: #fff;
+  border-top:4px solid rgba(255,255,255,0.15);
+  border-left:4px solid rgba(255,255,255,0.15);
+  box-shadow: 0 0 60px rgba(255,255,255,0.08);
 
   label {
     display: block;
@@ -108,7 +134,8 @@ export default {
   .loginBtn {
     font-size: 32px;
     border-radius: 10px;
-    background: #2816a7;
+    background: #3F29D9;
+    border:0px;
   }
 }
 </style>

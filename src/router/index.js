@@ -11,6 +11,8 @@ import Order from '../views/order.vue';
 import Finish from '../views/finish.vue';
 import CoinChage from '../views/coinChage.vue';
 import CardChage from '../views/cardChage.vue';
+import Examine from '../views/examine.vue';
+
 
 Vue.use(VueRouter);
 
@@ -69,6 +71,11 @@ const routes = [
     path: '/cardChage',
     name: 'CardChage',
     component: CardChage,
+  },
+  {
+    path:'/examine',
+    name:'Examine',
+    component: Examine,
   },
 ];
 
