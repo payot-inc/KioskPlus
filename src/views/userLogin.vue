@@ -1,0 +1,256 @@
+<template>
+  <div class="userLogin" id="container">
+    <JoinModal
+      :phone="[phone.first, phone.middle, phone.last].join('-')"
+      ref="joinModal"
+    />
+    <loginModal
+      :phone="[phone.first, phone.middle, phone.last].join('-')"
+      ref="loginModal"
+    />
+
+    <SubTitleBar title="전화번호 입력" />
+
+    <div class="inner">
+      <div class="introText">
+        포인트적립을 위한 전화번호를 입력해주세요
+      </div>
+
+      <div class="loginBox">
+        <div class="phoneNumber-view">
+          <h4>전화번호입력(필수)<span>*</span></h4>
+          <div class="number-view">
+            <span class="number">{{ phone.first }}</span>
+            <span class="bar">-</span>
+            <span class="number">{{ phone.middle }}</span>
+            <span class="bar">-</span>
+            <span class="number">{{ phone.last }}</span>
+          </div>
+          <p>왼쪽 키패드에서 전화번호를 입력해주세요</p>
+        </div>
+        <div class="keypad">
+          <div class="rowLine" v-for="row in 3" :key="row">
+            <v-btn
+              width="100px"
+              height="100px"
+              class="key"
+              outlined
+              v-for="col in 3"
+              :key="col"
+              @click="inputNumber((row - 1) * 3 + col)"
+              >{{ (row - 1) * 3 + col }}</v-btn
+            >
+          </div>
+          <div class="rowLine">
+            <v-btn
+              width="100px"
+              height="100px"
+              class="key del"
+              outlined
+              @click="removeSingleNumber"
+            >
+              <v-icon>fa-backspace</v-icon>
+            </v-btn>
+            <v-btn
+              width="100px"
+              height="100px"
+              class="key"
+              outlined
+              @click="inputNumber(0)"
+            >
+              0
+            </v-btn>
+            <v-btn
+              @click="allClear()"
+              width="100px"
+              height="100px"
+              class="key re"
+              outlined
+              >다시입력</v-btn
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import JoinModal from '@/components/modal/joinModal.vue';
+import LoginModal from '@/components/modal/loginModal.vue';
+import SubTitleBar from '@/components/subTitleBar.vue';
+
+export default {
+  name: 'userLogin',
+  components: {
+    JoinModal,
+    SubTitleBar,
+    LoginModal,
+  },
+  data() {
+    return {
+      keyWidth: '120px',
+      keyHeight: '120px',
+      phone: {
+        first: '010',
+        middle: '',
+        last: '',
+      },
+    };
+  },
+
+  watch: {
+    setPhone(newValue) {
+      if (newValue.length === 11) {
+        this.PasswordModal();
+      }
+    },
+  },
+
+  computed: {
+    setPhone() {
+      return [this.phone.first, this.phone.middle, this.phone.last].join('');
+    },
+  },
+
+  methods: {
+    inputNumber(number) {
+      const { first, middle, last } = this.phone;
+      if (first.length < 3) {
+        this.phone.first += number;
+      } else if (middle.length < 4) {
+        this.phone.middle += number;
+      } else if (last.length < 4) {
+        this.phone.last += number;
+      }
+    },
+    removeSingleNumber() {
+      const { middle, last } = this.phone;
+      if (last.length !== 0) {
+        this.phone.last = last.slice(0, last.length - 1);
+      } else if (middle.length !== 0) {
+        this.phone.middle = middle.slice(0, middle.length - 1);
+      }
+    },
+    allClear() {
+      this.phone.first = '010';
+      this.phone.middle = '';
+      this.phone.last = '';
+    },
+
+    PasswordModal() {
+      if (this.setPhone === '01000000000') {
+        this.$refs.loginModal.open(true);
+      } else {
+        this.$refs.joinModal.open(true);
+      }
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.userLogin {
+  .inner {
+    padding: 0 70px;
+
+    .introText {
+      font-size: 64px;
+      line-height: 88px;
+      color: #fff;
+      word-break: keep-all;
+      font-weight: 500;
+      margin-bottom: 70px;
+    }
+
+    .loginBox {
+      display: flex;
+      width: 100%;
+      flex-direction: row;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+
+      .phoneNumber-view {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        padding: 40px;
+        overflow: hidden;
+        background: #f8f8f8;
+        h4 {
+          font-weight: 500;
+          font-size: 28px;
+          color: #292929;
+          span {
+            color: #d22828;
+            margin-left: 10px;
+          }
+        }
+
+        .number-view {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          margin-top: 20px;
+          min-height: 100px;
+          border-bottom: 4px solid #0085de;
+          animation: numberViewLine 1.5s infinite;
+
+          @keyframes numberViewLine {
+            0% {
+              border-bottom: 4px solid #f2f2f2;
+            }
+            100% {
+              border-bottom: 4px solid #0085de;
+            }
+          }
+
+          span.number {
+            width: 120px;
+            font-size: 40px;
+            font-weight: 600;
+            text-align: center;
+          }
+          span.bar {
+            font-size: 32px;
+            font-weight: 600;
+            color: #c2c2c2;
+          }
+        }
+
+        p {
+          margin-top: 30px;
+          word-break: keep-all;
+          color: #888;
+        }
+      }
+
+      .keypad {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        align-items: center;
+        padding: 40px;
+        .rowLine {
+          margin-bottom: 20px;
+        }
+        .key {
+          font-size: 32px;
+          border-radius: 50px;
+          background-color: #f2f2f2;
+          border:0px;
+          margin: 0 10px;
+          overflow:hidden;
+        }
+
+        .key.re {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+</style>
