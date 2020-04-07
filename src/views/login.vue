@@ -2,7 +2,7 @@
   <div class="login">
     <div class="contents">
       <div class="loginTitle">
-        KIOSK <span>PRO</span>
+        KIOSK<span>PRO</span>
       </div>
 
       <div class="loginBox">

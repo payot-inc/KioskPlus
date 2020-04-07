@@ -5,18 +5,35 @@
       <strong>070-7807-6857</strong>
     </div>
     <div class="btns">
-      <v-btn text height="60px" color="rgba(255,255,255,0.7)" class="footerBtn">
+      <v-btn text height="60px" color="rgba(255,255,255,0.7)" class="footerBtn" @click="tremsOpen(true)">
         개인정보 취급방침</v-btn>
-      <v-btn text height="60px" color="rgba(255,255,255,0.7)" class="footerBtn">
+      <v-btn text height="60px" color="rgba(255,255,255,0.7)" class="footerBtn" @click="tremsOpen(true)">
         키오스크 이용약관</v-btn>
       <div class="version">V1.2.3</div>
     </div>
+
+    <Terms 
+      ref="terms"
+    />
   </div>
 </template>
 
 <script>
-export default {};
+import Terms from '@/components/modal/terms.vue';
+
+export default {
+  components:{
+    Terms,
+  },
+  methods:{
+    tremsOpen(value){
+      this.$refs.terms.open(value);
+    }
+  }
+};
+
 </script>
+
 
 <style lang="scss" scoped>
 .footer {
