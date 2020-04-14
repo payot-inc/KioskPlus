@@ -75,6 +75,7 @@
     <CashModal ref="cashModal" :counter="this.modalCounter" />
     <CardModal ref="cardModal" :counter="this.modalCounter" />
     <Progress ref="loading" title="결제를 진행중입니다" />
+    <CreditSelectModal />
 
     <!-- 포인트사용하기 모달 -->
   </div>
@@ -87,6 +88,7 @@ import PointUse from '@/components/modal/pointUse.vue';
 import CashModal from '@/components/modal/cashModal.vue';
 import CardModal from '@/components/modal/cardModal.vue';
 import Progress from '@/components/modal/progress.vue';
+import CreditSelectModal from '@/components/modal/creditSelect.vue'
 
 export default {
   components: {
@@ -95,6 +97,7 @@ export default {
     CashModal,
     CardModal,
     Progress,
+    CreditSelectModal,
   },
 
   data() {
