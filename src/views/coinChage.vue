@@ -64,6 +64,13 @@
       description="충전하실 금액만큼 지폐투입기에 현금을 넣고 완료버튼을 눌러주세요"
       type="alert"
     />
+
+    <div class="black-background">
+      <div class="back-text">
+        <p><span>60</span>초 후 </p>
+        <p>메인으로 이동합니다</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -105,6 +112,30 @@ export default {
   overflow:hidden;
 }
 
+.black-background{
+  display:block;
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  z-index:2;
+
+  .back-text{
+    position:absolute;
+    padding:0 60px;
+    width:100%;
+    top:200px;
+    left:0px;
+    color:#fff;
+    font-size:36px;
+
+    p{
+      margin-bottom:0px;
+      span{font-size:64px;margin-right:10px;}
+    }
+  }
+}
+
 .visualTitle{
   color:#fff;
 
@@ -119,8 +150,11 @@ export default {
   margin-top:40px;
   overflow:hidden;
   box-shadow:0 0 30px rgba(0,0,0,0.2);
+  position:relative;
+  z-index:3;
   
   .coinImg{
+  
     width:300px;
     background:#f2f2f2;
     min-height:600px;
@@ -172,6 +206,8 @@ export default {
 }
 
 .eventTable{
+  position:relative;
+  z-index:3;
   background:#fff;
   border-radius:10px;
   margin-top:40px;
