@@ -113,7 +113,7 @@ export default {
 }
 
 .black-background{
-  display:block;
+  display:none;
   position:fixed;
   width:100%;
   height:100%;
@@ -134,6 +134,9 @@ export default {
       span{font-size:64px;margin-right:10px;}
     }
   }
+}
+.black-background.active{
+  display:block;
 }
 
 .visualTitle{
