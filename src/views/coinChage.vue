@@ -65,7 +65,7 @@
       type="alert"
     />
 
-    <div class="black-background">
+    <div class="black-background" :class="black ? 'active': ''">
       <div class="back-text">
         <p><span>60</span>초 후 </p>
         <p>메인으로 이동합니다</p>
@@ -86,6 +86,7 @@ export default {
   data(){
     return{
       price:0,
+      black:true,
     }
   },
   methods:{
