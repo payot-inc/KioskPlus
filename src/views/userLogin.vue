@@ -69,7 +69,7 @@
         <v-row>
           <v-col cols="3">
             <dl>
-              <dt>이미지</dt>
+              <dt><img src="@/assets/img/guide-01.png"></dt>
               <dd>
                 <strong>장비 확인 및 준비</strong>
                 <span>사용하고자 하는 장비에서 코스를 선택 후 세탁물을 넣고 문을 닫아주세요</span>
@@ -78,7 +78,7 @@
           </v-col>
           <v-col cols="3">
             <dl>
-              <dt>이미지</dt>
+              <dt><img src="@/assets/img/guide-02.png"></dt>
               <dd>
                 <strong>키오스크 사용</strong>
                 <span>키오스크에서 사용하고자 하는 장비선택 후 투입금액을 설정합니다</span>
@@ -87,7 +87,7 @@
           </v-col>
           <v-col cols="3">
             <dl>
-              <dt>이미지</dt>
+              <dt><img src="@/assets/img/guide-03.png"></dt>
               <dd>
                 <strong>포인트 사용 및 결제</strong>
                 <span>사용할 포인트를 설정 후 신용카드 및 현금 중 결제방법을 선택하고 결제합니다</span>
@@ -96,7 +96,7 @@
           </v-col>
           <v-col cols="3">
             <dl>
-              <dt>이미지</dt>
+              <dt><img src="@/assets/img/guide-04.png"></dt>
               <dd>
                 <strong>장비 사용</strong>
                 <span>모든 과정이 완료되면 해당 장비로 돌아가 시작하기 버튼을 눌러줍니다</span>
@@ -321,6 +321,8 @@ export default {
         justify-content: center;
         align-items: center;
         overflow:hidden;
+
+        img{height:100%;}
       }
       dd{
         margin-top:30px;
