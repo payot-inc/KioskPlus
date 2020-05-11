@@ -23,7 +23,7 @@ export default {
   props: ['text1', 'text2', 'ok', 'cancle'],
   data() {
     return {
-      visible: false,
+      visible: true,
     };
   },
   methods: {

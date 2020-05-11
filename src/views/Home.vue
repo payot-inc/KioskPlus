@@ -12,11 +12,6 @@
             지금 결제하시면 최대 10% 추가적립 해 드립니다
           </marquee>
         </div>
-        <div class="eventBtns">
-          <v-btn outlined @click="$refs.eventModal.open(true)">
-            이벤트 전체보기 <v-icon>fa-chevron-circle-down</v-icon>
-          </v-btn>
-        </div>
       </div>
 
       <div class="main-title">
@@ -31,26 +26,26 @@
       </div>
 
       <div class="mainBtns">
-        <v-card class="mainBtn01" outlined @click="nextPage">
-          <div class="image"><img src="@/assets/img/main_img01.png" /></div>
-          <dl>
-            <dt>
-              <span>이용하기</span
-              ><v-icon large color="#EE2073">fa-arrow-circle-right</v-icon>
-            </dt>
-            <dd>충전없이 장비를 사용하시려면 이 버튼을 터치해주세요</dd>
-          </dl>
-        </v-card>
-        <v-card class="mainBtn02"  outlined @click="nextPage">
+        <v-card class="mainBtn01"  outlined @click="nextPage">
           <div class="image"><img src="@/assets/img/main_img02.png" /></div>
           <dl>
             <dt>
-              <span>충전하기</span
+              <span>포인트 충전하기</span
               ><v-icon large color="#EE2073">fa-arrow-circle-right</v-icon>
             </dt>
             <dd>미리 금액을 충전하시면 추가 보너스 적립금을 드립니다</dd>
           </dl>
         </v-card>
+        <v-card class="mainBtn02" outlined @click="nextPage">
+          <div class="image"><img src="@/assets/img/main_img01.png" /></div>
+          <dl>
+            <dt>
+              <span>포인트 사용하기</span
+              ><v-icon large color="#EE2073">fa-arrow-circle-right</v-icon>
+            </dt>
+            <dd>충전없이 장비를 사용하시려면 이 버튼을 터치해주세요</dd>
+          </dl>
+        </v-card>  
       </div>
 
       <div class="mainBottom">

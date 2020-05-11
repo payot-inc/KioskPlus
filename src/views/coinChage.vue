@@ -27,7 +27,7 @@
           <div class="getPrice">
             {{price | numeral('0,0') }} 원
           </div>
-          <p>한번에 최대 50,000 포인트까지 충전 가능합니다</p>
+          <p>한번에 최대 5만원까지 충전이 가능합니다</p>
           <dl style="margin-top:40px;">
             <dt>추가적립 포인트</dt>
             <dd>0</dd>
@@ -44,12 +44,68 @@
         <dl>
           <dt>구간별 추가적립 보너스</dt>
           <dd>
-            <ul>
-              <li v-for="item in 10" :key="item">
-                <span>{{item}}만원 이상 결제시</span>
-                <span class="percent">{{item}}% 추가적립</span>
-              </li>
-            </ul>
+            <v-row>
+              <v-col cols="4">
+                <div class="eventItem active">
+                  <span class="name">
+                    1만원이하 결제시
+                  </span>
+                  <span class="cont">
+                    1% 포인트적립
+                  </span>
+                </div>
+              </v-col>
+              <v-col cols="4">
+                <div class="eventItem">
+                  <span class="name">
+                    1만원 ~ 2만원 이하
+                  </span>
+                  <span class="cont">
+                    2% 포인트적립
+                  </span>
+                </div>
+              </v-col>
+              <v-col cols="4">
+                <div class="eventItem">
+                  <span class="name">
+                    2만원 ~ 3만원 이하
+                  </span>
+                  <span class="cont">
+                    3% 포인트적립
+                  </span>
+                </div>
+              </v-col>
+              <v-col cols="4">
+                <div class="eventItem">
+                  <span class="name">
+                    3만원 ~ 4만원 이하
+                  </span>
+                  <span class="cont">
+                    4% 포인트적립
+                  </span>
+                </div>
+              </v-col>
+              <v-col cols="4">
+                <div class="eventItem">
+                  <span class="name">
+                    4만원 ~ 5만원 이하
+                  </span>
+                  <span class="cont">
+                    5% 포인트적립
+                  </span>
+                </div>
+              </v-col>
+              <v-col cols="4">
+                <div class="eventItem">
+                  <span class="name">
+                    1만원 ~ 2만원 이하
+                  </span>
+                  <span class="cont">
+                    5% 포인트적립
+                  </span>
+                </div>
+              </v-col>
+            </v-row>
           </dd>
         </dl>
       </div>
@@ -137,7 +193,7 @@ export default {
   }
 }
 .black-background.active{
-  display:block;
+  display:none;
 }
 
 .visualTitle{
@@ -201,10 +257,18 @@ export default {
       margin-top:40px;
       border-radius:10px;
       border:0px;
-      background:#EE2073;
       color:#fff;
       font-size:32px;font-weight:400;
-    
+      animation: getBtn 0.5s ease infinite;
+    }
+
+    @keyframes getBtn {
+      0%{
+        background:#EE2073;
+      }
+      100%{
+        background:#CC2073;
+      }
     }
   }
 }
@@ -212,14 +276,11 @@ export default {
 .eventTable{
   position:relative;
   z-index:3;
-  background:#fff;
-  border-radius:10px;
   margin-top:40px;
   overflow:hidden;
-  box-shadow:0 0 30px rgba(0,0,0,0.2);
 
   dl{
-    border-radius:10px;
+    overflow:hidden;
 
     dt{
       font-size:32px;
@@ -231,33 +292,31 @@ export default {
       padding:0 40px;
       color:#fff;
       margin-top:-1px;
+      border-radius:10px;
     }
+
     dd{
-      height:340px;
-      padding:20px 40px;
       overflow-y:auto;
+      margin-top:15px;
 
-      ul{ 
-        padding:0px;
+      .eventItem{
+        background:#fff;
+        padding:20px;
+        border-radius:10px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.20);
+        text-align:center;
+
+        span{display:block;}
+        span.name{font-size:24px;color:#292929;}
+        span.cont{font-size:28px;color:#EE2073;font-weight:500}
         
-        li{
-          display:flex;
-          justify-content: space-between;
-          align-items: center;
-          height:70px;
-          border-radius:10px;
-          margin-bottom:10px;
-          border-bottom:2px solid #e2e2e2;
-          
-          span{font-size:26px;}
-          span.percent{
-            color:#EE2073;
-            font-weight:500
-          }
-        }
-
-        li:last-child{border-bottom:0px;}
       }
+
+      .eventItem.active{
+        border:4px solid #EE2073;
+        box-sizing: border-box;
+      }
+
     }
   }
 }
