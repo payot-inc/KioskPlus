@@ -9,16 +9,28 @@
         <div class="shop_name">{{ company.name }}</div>
       </div>
     </div>
-    <V-btn
-      class="home_btn"
-      color="rgba(0,0,0,0.3)"
-      width="140px"
-      height="140px"
-      text-color="#fff"
-      @click="goToHome"
-    >
-      <v-icon size="60">mdi-home</v-icon>
-    </V-btn>
+    <div class="right-cont">
+      <div class="prograss">
+        <v-progress-linear
+          color="white accent-4"
+          value="30"
+          rounded
+          height="14"
+          style="border-radius:7px;overflow:hidden"
+        ></v-progress-linear>
+        <span><b>30%</b> 다운로드 중</span>
+      </div>
+      <v-btn
+        class="home_btn"
+        color="rgba(0,0,0,0.3)"
+        width="140px"
+        height="140px"
+        text-color="#fff"
+        @click="goToHome"
+      >
+        <v-icon size="60">mdi-home</v-icon>
+      </v-btn>
+    </div>
   </div>
 </template>
 
@@ -83,7 +95,7 @@ export default {
       font-family: 'SCDream';
       font-weight: 400;
       font-size: 24px;
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.6);
 
       .shop_name {
         color: #fff;
@@ -91,9 +103,28 @@ export default {
     }
   }
 
-  .home_btn {
-    color: #fff;
-    border-radius: 0px;
+  .right-cont{
+    display:flex;
+    align-items: center;;
+    .prograss{
+      width:240px;
+      margin-right:30px;
+
+      span{
+        display:block;
+        margin-top:15px;
+        text-align:right;
+        color:rgba(255, 255, 255, 0.6);
+
+        b{color:#fff;font-weight:normal}
+      
+      }
+    }
+
+    .home_btn {
+      color: #fff;
+      border-radius: 0px;
+    }
   }
 }
 </style>

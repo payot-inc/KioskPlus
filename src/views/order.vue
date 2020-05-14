@@ -75,13 +75,14 @@
     <CashModal ref="cashModal" :counter="this.modalCounter" />
     <CardModal ref="cardModal" :counter="this.modalCounter" />
     <Progress ref="loading" title="결제를 진행중입니다" />
+    <CreditSelectModal />
     <Confirm ref="confirm"
       ok="네, 사용합니다"
       cancle="아니요, 직접 입력하겠습니다"
       text1="가지고 계신 3,250포인트"
       text2="바로 사용할까요?"
     />
-    <CreditSelectModal />
+    
 
     <!-- 포인트사용하기 모달 -->
   </div>
